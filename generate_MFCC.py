@@ -14,23 +14,28 @@ def extract_features_MFCC(file_name):
 	audio = audio[:,0:1]
 	# print audio.shape
 	n, d = audio.shape
-	begin_slice = n / 2 - 5000000
-	end_slice = n / 2 + 5000000
+	begin_slice = n / 2 - 500000
+	end_slice = n / 2 + 500000
 	middle_slice = audio[begin_slice:end_slice]
 	# print(middle_slice.shape)
 	return middle_slice
 
-	# amplitude_abs_value = np.absolute(audio)
-	# mean = np.mean(amplitude_abs_value)
-	# std = np.std(amplitude_abs_value)
 
 def gen_MFCC(file_name):
+	# test with whole song and rate
+	rate, audio_signal = read(file_name)
+	begin_slice = audio_signal.shape[0] / 2 - 3000000
+	end_slice = audio_signal.shape[0] / 2 + 3000000
+	sig = audio_signal[begin_slice:end_slice]
+	mfcc_feat = mfcc(sig, rate)
+
+	# test with middle slice of specified size
+	# audio_signal = extract_features_MFCC(file_name)
+	# mfcc_feat = mfcc(audio_signal)
 	
-	audio_signal = extract_features_MFCC(file_name)
-	print(audio_signal.shape)
-	mfcc_feat = mfcc(audio_signal)
-	print(mfcc_feat)
-	print(mfcc_feat.shape)
 	return mfcc_feat
 
-MFCC = gen_MFCC('test_Everyday.wav')
+MFCC = gen_MFCC('data/metal/Black_Sabbath_Paranoid.wav')
+print(MFCC.shape)
+MFCC2 = gen_MFCC('data/metal/Black_Sabbath_War_Pigs.wav')
+print(MFCC2.shape)
