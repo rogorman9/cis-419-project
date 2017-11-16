@@ -1,18 +1,18 @@
 import numpy as np
 from scipy.io.wavfile import read
 
-
-"""
-Function to convert wav file into feature vector.
-
-Features Returned:
-	- mean of absolute value of amplitude data
-	- std of absolute value of amplitude data
-	- variance of absolute value of amplitude data
-	- we will split the song into 100 segments, take the mean amplitude for each segment, and take the std of these 100 means
-		- this will give us a good measure of the consistency of the song volume (for example, if there are loud choruses and soft verses)
-"""
 def extract_features_from_wav(file_name):
+	"""
+	Function to convert wav file into feature vector.
+
+	Features Returned:
+		- mean of absolute value of amplitude data
+		- std of absolute value of amplitude data
+		- variance of absolute value of amplitude data
+		- we will split the song into 100 segments, take the mean amplitude for each segment, and take the std of these 100 means
+			- this will give us a good measure of the consistency of the song volume (for example, if there are loud choruses and soft verses)
+	"""
+
 	raw = read(file_name, 'rb')
 	audio = raw[1]
 	print audio.shape
