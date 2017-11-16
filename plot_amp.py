@@ -7,7 +7,7 @@ import sys
 
 plt.rcParams['agg.path.chunksize'] = 10000
 
-spf = wave.open('data/metal/cleaned/Black_Sabbath_War_Pigs.wav','r')
+spf = wave.open('data/metal/Black_Sabbath_War_Pigs.wav','r')
 
 #Extract Raw Audio from Wav File
 signal = spf.readframes(-1)
