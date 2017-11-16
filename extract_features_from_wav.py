@@ -42,7 +42,7 @@ def extract_features_from_wav(file_name):
 
 	std_of_100_avgs = np.std(avg_of_100_segments)
 
-	return (str(file_name), mean, std, var, std_of_100_avgs)
+	return np.array([mean, std, var, std_of_100_avgs])
 
 	
 
