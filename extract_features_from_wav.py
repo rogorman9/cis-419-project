@@ -15,7 +15,6 @@ Features Returned:
 def extract_features_from_wav(file_name):
 	raw = read(file_name, 'rb')
 	audio = raw[1]
-	print audio.shape
 
 	amplitude_abs_value = np.absolute(audio)
 
@@ -36,13 +35,31 @@ def extract_features_from_wav(file_name):
 	var = np.var(amplitude_abs_value)
 
 	avg_of_100_segments = np.array([])
+	for i in xrange(100):
+		amplitude_slice = amplitude_abs_value[len(amplitude_abs_value)*i/100:len(amplitude_abs_value)*(i+1)/100]
+		m = np.mean(amplitude_slice)
+		avg_of_100_segments = np.append(avg_of_100_segments, m)
 
-	print mean, std, var
+	std_of_100_avgs = np.std(avg_of_100_segments)
+
+	print str(file_name), mean, std, var, std_of_100_avgs
 
 	
 
 
 
 
-extract_features_from_wav('data/metal/cleaned/Black_Sabbath_War_Pigs.wav')
+extract_features_from_wav('data/metal/Black_Sabbath_War_Pigs.wav')
+extract_features_from_wav('data/metal/Black_Sabbath_Iron_Man.wav')
+extract_features_from_wav('data/metal/Black_Sabbath_Paranoid.wav')
+extract_features_from_wav('data/metal/Holy_Wars_The_Punishment_Due.wav')
+extract_features_from_wav('data/metal/Iron_Maiden_Hallowed_Be_Thy_Name.wav')
+
+
+
+
+
+
+
+
 
