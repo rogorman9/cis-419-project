@@ -1,7 +1,6 @@
 import numpy as np
 from scipy.io.wavfile import read
 
-
 def extract_features_from_wav(file_name):
 	"""
 	Function to convert wav file into feature vector.
