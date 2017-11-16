@@ -47,8 +47,6 @@ def extract_features_from_wav(file_name):
 	
 
 
-
-
 # extract_features_from_wav('data/metal/Black_Sabbath_War_Pigs.wav')
 # extract_features_from_wav('data/metal/Black_Sabbath_Iron_Man.wav')
 # extract_features_from_wav('data/metal/Black_Sabbath_Paranoid.wav')

@@ -24,10 +24,10 @@ def extract_features_MFCC(file_name):
 def gen_MFCC(file_name):
 	# test with whole song and rate
 	rate, audio_signal = read(file_name)
-	begin_slice = audio_signal.shape[0] / 2 - 3000000
-	end_slice = audio_signal.shape[0] / 2 + 3000000
+	begin_slice = audio_signal.shape[0] / 2 - 2000000
+	end_slice = audio_signal.shape[0] / 2 + 2000000
 	sig = audio_signal[begin_slice:end_slice]
-	mfcc_feat = mfcc(sig, rate)
+	mfcc_feat = mfcc(sig, rate, winlen=0.25, winstep=0.1,nfft=11025)
 
 	# test with middle slice of specified size
 	# audio_signal = extract_features_MFCC(file_name)
@@ -35,7 +35,17 @@ def gen_MFCC(file_name):
 	
 	return mfcc_feat
 
-MFCC = gen_MFCC('data/metal/Black_Sabbath_Paranoid.wav')
-print(MFCC.shape)
-MFCC2 = gen_MFCC('data/metal/Black_Sabbath_War_Pigs.wav')
-print(MFCC2.shape)
+
+def gen_data_from_MFCC():
+	MFCC = gen_MFCC('data/metal/Black_Sabbath_Paranoid.wav')
+	print(MFCC.shape)
+	print(np.mean(MFCC[1]))
+	MFCC2 = gen_MFCC('data/metal/Black_Sabbath_War_Pigs.wav')
+	# print(MFCC2.shape)
+	# print(MFCC2[2])
+	print(np.mean(MFCC2[1]))
+	MFCC3 = gen_MFCC('data/classical/Sprint_Allegro.wav')
+	MFCC4 = gen_MFCC('data/classical/Toccata.wav')
+
+
+gen_data_from_MFCC()
