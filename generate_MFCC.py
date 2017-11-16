@@ -44,7 +44,7 @@ def gen_data_from_MFCC():
 	# print(MFCC2.shape)
 	# print(MFCC2[2])
 	print(np.mean(MFCC2[1]))
-	MFCC3 = gen_MFCC('data/classical/Sprint_Allegro.wav')
+	# MFCC3 = gen_MFCC('data/classical/Sprint_Allegro.wav')
 	MFCC4 = gen_MFCC('data/classical/Toccata.wav')
 
 
