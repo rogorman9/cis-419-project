@@ -31,5 +31,6 @@ def gen_MFCC(file_name):
 	mfcc_feat = mfcc(audio_signal)
 	print(mfcc_feat)
 	print(mfcc_feat.shape)
+	return mfcc_feat
 
 MFCC = gen_MFCC('test_Everyday.wav')
