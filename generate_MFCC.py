@@ -39,8 +39,13 @@ def gen_MFCC(file_name):
 def gen_data_from_MFCC():
 	MFCC = gen_MFCC('data/metal/Black_Sabbath_Paranoid.wav')
 	print(MFCC.shape)
+	print(np.mean(MFCC[1]))
 	MFCC2 = gen_MFCC('data/metal/Black_Sabbath_War_Pigs.wav')
-	print(MFCC2.shape)
+	# print(MFCC2.shape)
+	# print(MFCC2[2])
+	print(np.mean(MFCC2[1]))
+	MFCC3 = gen_MFCC('data/classical/Sprint_Allegro.wav')
+	MFCC4 = gen_MFCC('data/classical/Toccata.wav')
 
 
 gen_data_from_MFCC()
