@@ -16,7 +16,7 @@ if len(sys.argv) < 2:
 filename = sys.argv[1]
 
 if os.path.isdir(filename):
-    for file in os.listdir(filename):
+    for file in [os.path.join(filename, f) for f in os.listdir(filename)]:
         song = AudioSegment.from_mp3(file).set_channels(1)
         song.export(file.rsplit('.', 1)[0] + ".wav", format='wav', parameters=["-ac", "1"])
 else:
