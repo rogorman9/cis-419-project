@@ -27,7 +27,14 @@ X_train, X_test, y_train, y_test = train_test_split(X, y)
 
 model = AdaBoostClassifier()
 
-print cross_val_score(model, X, y, cv=5)
+scores = []
+
+for i in range(10):
+    scores += cross_val_score(model, X, y, cv=5).tolist()
+
+print scores
+print np.mean(scores)
+print np.std(scores)
 
 
 
