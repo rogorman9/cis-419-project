@@ -30,7 +30,8 @@ model = AdaBoostClassifier()
 scores = []
 
 for i in range(10):
-    scores += cross_val_score(model, X, y, cv=5).tolist()
+    score = cross_val_score(model, X, y, cv=5)
+    scores += list(score)
 
 print scores
 print np.mean(scores)
