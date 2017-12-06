@@ -8,6 +8,7 @@ from sklearn.model_selection import GridSearchCV
 
 classical_path = os.path.join("data", "classical")
 metal_path = os.path.join("data", "metal")
+rap_path = os.path.join("data", "rap")
 
 X = []
 y = []
@@ -17,11 +18,18 @@ for audio_file in os.listdir(classical_path):
     X.append(gen_MFCC(os.path.join(classical_path, audio_file)).flatten().tolist())
     y.append("classical")
 
+
 for audio_file in os.listdir(metal_path):
     # print audio_file
     X.append(gen_MFCC(os.path.join(metal_path, audio_file)).flatten().tolist())
     y.append("metal")
 
+'''
+for audio_file in os.listdir(rap_path):
+    # print audio_file
+    X.append(gen_MFCC(os.path.join(rap_path, audio_file)).flatten().tolist())
+    y.append("rap")
+'''
 X = np.array(X)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y)
