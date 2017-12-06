@@ -7,52 +7,15 @@ import pandas as pd
 from sklearn import svm
 from sklearn.model_selection import GridSearchCV
 
-'''
-classical_path = os.path.join("data", "classical")
-metal_path = os.path.join("data", "metal")
-rap_path = os.path.join("data", "rap")
-'''
-
-# X = []
-# y = []
-
-# X_test = pd.read_csv('data/features.csv', header=None).as_matrix()
 X = pd.read_csv('data/features.csv', header=None).as_matrix()
+# Idea: standardize features
+# standardize values of each feature
+# mean = np.mean(X, axis=0)
+# std = np.std(X, axis=0)
+# X = (X - mean) / std
 
-# print('X shape: ', X.shape)
-# print('type: ', type(X_test))
-# y_test = pd.read_csv('data/labels.csv', header=None).as_matrix()
 y = pd.read_csv('data/labels.csv', header=None).as_matrix()
-y = y.reshape(len(y[0]), 1)
-print(y.shape)
-
-# y_test = y_test.reshape(len(y_test[0]), 1)
-# print('y shape: ', y_test.shape)
-# print(y_test)
-'''
-for audio_file in os.listdir(classical_path):
-    X.append(gen_MFCC(os.path.join(classical_path, audio_file)).flatten().tolist())
-    y.append("classical")
-
-
-for audio_file in os.listdir(metal_path):
-    X.append(gen_MFCC(os.path.join(metal_path, audio_file)).flatten().tolist())
-    y.append("metal")
-
-
-for audio_file in os.listdir(rap_path):
-    X.append(gen_MFCC(os.path.join(rap_path, audio_file)).flatten().tolist())
-    y.append("rap")
-'''
-'''
-X = np.array(X)
-
-# delete these 3 lines later
-
-print('X shape: ', X.shape)
-print('y length: ', len(y))
-print('y :', y)
-'''
+y = y.reshape(len(y[0]), )
 
 X_train, X_test, y_train, y_test = train_test_split(X, y)
 

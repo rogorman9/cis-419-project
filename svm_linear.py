@@ -3,9 +3,11 @@ from sklearn.model_selection import cross_val_score
 from generate_MFCC import gen_MFCC
 import os
 import numpy as np
+import pandas as pd
 from sklearn import svm
 from sklearn.model_selection import GridSearchCV
 
+'''
 classical_path = os.path.join("data", "classical")
 metal_path = os.path.join("data", "metal")
 rap_path = os.path.join("data", "rap")
@@ -28,6 +30,20 @@ for audio_file in os.listdir(rap_path):
     y.append("rap")
 
 X = np.array(X)
+'''
+
+X = pd.read_csv('data/features.csv', header=None).as_matrix()
+# Idea: standardize features
+# standardize values of each feature
+# mean = np.mean(X, axis=0)
+# std = np.std(X, axis=0)
+# X = (X - mean) / std
+
+y = pd.read_csv('data/labels.csv', header=None).as_matrix()
+y = y.reshape(len(y[0]), )
+
+X_train, X_test, y_train, y_test = train_test_split(X, y)
+
 
 X_train, X_test, y_train, y_test = train_test_split(X, y)
 
