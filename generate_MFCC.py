@@ -10,7 +10,7 @@ def gen_MFCC(file_name):
 	# Alter size of slice, smaller sizes may be quicker and give higher accuracy but could be prone to overfitting
 	begin_slice = audio_signal.shape[0] / 2 - 20000000
 	end_slice = audio_signal.shape[0] / 2 + 20000000
-	print "Shape: ", audio_signal.shape
+	# print "Shape: ", audio_signal.shape
 	begin_slice = audio_signal.shape[0] / 2 - 3500000
 	end_slice = audio_signal.shape[0] / 2 + 3500000
 	sig = audio_signal[begin_slice:end_slice]
