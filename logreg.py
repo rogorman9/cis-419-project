@@ -19,7 +19,7 @@ y = y.reshape(len(y[0]), )
 
 X_train, X_test, y_train, y_test = train_test_split(X, y)
 
-parameters = {'C': [0.5, 1, 5]}
+parameters = {'C': [0.1, 0.3, 0.5, 0.7, 1, 5]}
 modelLG = GridSearchCV(LogisticRegression(), parameters, scoring='accuracy', cv=5)
 modelLG.fit(X_train, y_train)
 print('best params: ', modelLG.best_params_)

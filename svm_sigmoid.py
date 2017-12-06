@@ -20,7 +20,7 @@ y = y.reshape(len(y[0]), )
 X_train, X_test, y_train, y_test = train_test_split(X, y)
 
 # parameters = {'C': [1, 3, 5, 10, 50, 100]}
-parameters = {'kernel': ['sigmoid'], 'C': [0.1, 0.5, 1, 1.5, 3]}
+parameters = {'kernel': ['sigmoid'], 'C': [0.05, 0.1, 0.3, 0.5, 1, 1.5, 3, 5]}
 modelSVM = GridSearchCV(svm.SVC(), parameters, scoring='accuracy', cv=5)
 modelSVM.fit(X_train, y_train)
 print('best params: ', modelSVM.best_params_)
