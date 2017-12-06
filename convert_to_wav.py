@@ -17,8 +17,12 @@ filename = sys.argv[1]
 
 if os.path.isdir(filename):
     for file in [os.path.join(filename, f) for f in os.listdir(filename)]:
-        song = AudioSegment.from_mp3(file).set_channels(1)
-        song.export(file.rsplit('.', 1)[0] + ".wav", format='wav')
+        _, filetype = os.path.splitext(file)
+        if filetype == ".mp3":
+            song = AudioSegment.from_mp3(file).set_channels(1)
+            song.export(file.rsplit('.', 1)[0] + ".wav", format='wav')
 else:
-    song = AudioSegment.from_mp3(filename).set_channels(1)
-    song.export(filename.rsplit('.', 1)[0] + ".wav", format='wav')
+    _, filetype = os.path.splitext(file)
+    if filetype == ".mp3":
+        song = AudioSegment.from_mp3(filename).set_channels(1)
+        song.export(filename.rsplit('.', 1)[0] + ".wav", format='wav')

@@ -29,7 +29,6 @@ for i in range(10):
     score = cross_val_score(model, X, y, cv=5)
     scores += list(score)
 
-print scores
 print np.mean(scores)
 print np.std(scores)
 
