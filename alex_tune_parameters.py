@@ -8,9 +8,10 @@ import os
 classical_path = os.path.join("data", "classical")
 metal_path = os.path.join("data", "metal")
 
-def tune_params(model, winlen_range, winstep_range, nfft_range, numcep_range):
+def tune_params(model, winlen_range=[0.025], winstep_range=[0.01], nfft_range=[512], numcep_range=[13]):
 	"""
 	Tunes the parameters winlen, winstep, nfft, and numcep
+	Default values are shown above in case we only want to tune one of these four values
 
 	Returns:
 		Best values for winlen, winstep, nfft, and numcep, all in a tuple
@@ -19,7 +20,7 @@ def tune_params(model, winlen_range, winstep_range, nfft_range, numcep_range):
 	best_accuracy = 0
 	best_params = (0, 0, 0, 0)
 	cntr = 1
-	for winl in winstep_range:
+	for winl in winlen_range:
 		for wins in winstep_range:
 			for nf in nfft_range:
 				for numc in numcep_range:
@@ -57,14 +58,21 @@ def tune_params(model, winlen_range, winstep_range, nfft_range, numcep_range):
 
 
 # Tune parameters of the MFCC, in order to give us a good idea of what range these values should lie within
+
+# Ideal winlen = 0.1
 winlen_range = [0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0, 5.0]
+# Ideal winstep = 0.005
 winstep_range = [0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0, 5.0]
+# Ideal nfft = 11025
 nfft_range = [10000, 11025, 12500, 15000]
+# Ideal numcep value = 13
 numcep_range = [3, 6, 9, 12, 13, 15, 18, 21]
+
 model = AdaBoostClassifier()
 tuned_values = tune_params(model, winlen_range, winstep_range, nfft_range, numcep_range)
 
 print tuned_values
+
 
 
 
