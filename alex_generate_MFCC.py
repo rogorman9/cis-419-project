@@ -11,7 +11,7 @@ def gen_MFCC(file_name):
 	begin_slice = audio_signal.shape[0] / 2 - 2000000
 	end_slice = audio_signal.shape[0] / 2 + 2000000
 	sig = audio_signal[begin_slice:end_slice]
-	mfcc_feat = mfcc(sig, rate, winlen=0.25, winstep=0.1, nfft=11025)
+	mfcc_feat = mfcc(sig, rate, winlen=0.1, winstep=0.005, numcep=13, nfft=11025)
 
 	# test with middle slice of specified size
 	# audio_signal = extract_features_MFCC(file_name)
