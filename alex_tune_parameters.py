@@ -8,7 +8,7 @@ import os
 classical_path = os.path.join("data", "classical")
 metal_path = os.path.join("data", "metal")
 
-def tune_params(model, winlen_range=[0.025], winstep_range=[0.01], nfft_range=[512], numcep_range=[13]):
+def tune_params(model, winlen_range=[0.025], winstep_range=[0.01], nfft_range=[11025], numcep_range=[13]):
 	"""
 	Tunes the parameters winlen, winstep, nfft, and numcep
 	Default values are shown above in case we only want to tune one of these four values
@@ -59,9 +59,9 @@ def tune_params(model, winlen_range=[0.025], winstep_range=[0.01], nfft_range=[5
 
 # Tune parameters of the MFCC, in order to give us a good idea of what range these values should lie within
 
-# Ideal winlen = 0.1
-winlen_range = [0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0, 5.0]
-# Ideal winstep = 0.005
+# Ideal winlen = 0.25
+winlen_range = [0.001, 0.005, 0.01, 0.05, 0.1, 0.25, 0.5, 1.0, 5.0]
+# Ideal winstep = 0.1
 winstep_range = [0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0, 5.0]
 # Ideal nfft = 11025
 nfft_range = [10000, 11025, 12500, 15000]
