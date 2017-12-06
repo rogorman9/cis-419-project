@@ -3,7 +3,7 @@ from sklearn.model_selection import cross_val_score
 from generate_MFCC import gen_MFCC
 import os
 import numpy as np
-from sklearn import svm
+from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import GridSearchCV
 
 classical_path = os.path.join("data", "classical")
@@ -27,20 +27,20 @@ for audio_file in os.listdir(rap_path):
     X.append(gen_MFCC(os.path.join(rap_path, audio_file)).flatten().tolist())
     y.append("rap")
 
+
 X = np.array(X)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y)
 
-# parameters = {'C': [1, 3, 5, 10, 50, 100]}
-parameters = {'kernel': ['linear'], 'C': [0.1, 0.5, 1, 1.5, 3]}
-modelSVM = GridSearchCV(svm.SVC(), parameters, scoring='accuracy', cv=5)
-modelSVM.fit(X_train, y_train)
-print('best params: ', modelSVM.best_params_)
+parameters = {'C': [0.5, 1, 5]}
+modelLG = GridSearchCV(LogisticRegression(), parameters, scoring='accuracy', cv=5)
+modelLG.fit(X_train, y_train)
+print('best params: ', modelLG.best_params_)
 
 scores = []
 
 for i in range(10):
-    score = cross_val_score(modelSVM, X, y, cv=5)
+    score = cross_val_score(modelLG, X, y, cv=5)
     scores += list(score)
 
 print scores

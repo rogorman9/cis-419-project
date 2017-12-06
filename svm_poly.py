@@ -14,19 +14,16 @@ X = []
 y = []
 
 for audio_file in os.listdir(classical_path):
-    # print audio_file
     X.append(gen_MFCC(os.path.join(classical_path, audio_file)).flatten().tolist())
     y.append("classical")
 
 
 for audio_file in os.listdir(metal_path):
-    # print audio_file
     X.append(gen_MFCC(os.path.join(metal_path, audio_file)).flatten().tolist())
     y.append("metal")
 
 
 for audio_file in os.listdir(rap_path):
-    # print audio_file
     X.append(gen_MFCC(os.path.join(rap_path, audio_file)).flatten().tolist())
     y.append("rap")
 
@@ -40,12 +37,10 @@ parameters = {'kernel': ['poly'], 'C': [0.1, 0.5, 1, 1.5, 3] ,'degree': [2, 3, 4
 modelSVM = GridSearchCV(svm.SVC(), parameters, scoring='accuracy', cv=5)
 modelSVM.fit(X_train, y_train)
 print('best params: ', modelSVM.best_params_)
-# model = svm.SVC(kernel='poly')
 
 scores = []
 
 for i in range(10):
-    # score = cross_val_score(model, X, y, cv=5)
     score = cross_val_score(modelSVM, X, y, cv=5)
     scores += list(score)
 
