@@ -2,6 +2,7 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 from alex_generate_MFCC import gen_MFCC
+from alex_tune_parameters import tuned_params
 import os
 import numpy as np
 
@@ -26,6 +27,13 @@ X = np.array(X)
 X_train, X_test, y_train, y_test = train_test_split(X, y)
 
 model = AdaBoostClassifier()
+
+# Tune parameters of the MFCC
+winlen_range = [0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0, 5.0]
+winstep_range = [0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0, 5.0]
+nfft_range = [10000, 11025, 12500, 15000]
+numcep_range = [3, 6, 9, 12, 13, 15, 18, 21]
+tuned_values = tuned_params(model, winlen_range, winstep_range, nfft_range, numcep_range)
 
 scores = []
 
