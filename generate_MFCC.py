@@ -16,7 +16,7 @@ def gen_MFCC(file_name):
 	sig = audio_signal[begin_slice:end_slice]
 	# winlen is 
 	# mfcc_feat = mfcc(sig, rate)
-	mfcc_feat = mfcc(sig, rate, winlen=0.25, winstep=0.1, nfft=11025)
+	mfcc_feat = mfcc(sig, rate, winlen=0.25, winstep=0.1, numcep=13, nfft=11025)
 	# mfcc_feat = mfcc(sig, rate, winlen=0.1, winstep=0.005, numcep=13, nfft=11025)
 
 	# test with middle slice of specified size
