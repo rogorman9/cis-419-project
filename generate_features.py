@@ -3,7 +3,7 @@ import sys
 import csv
 from generate_MFCC import gen_MFCC
 
-genres = ["classical", "metal", "rap"]
+genres = ["classical", "metal", "rap", "jazz"]
 
 X = []
 y = []
