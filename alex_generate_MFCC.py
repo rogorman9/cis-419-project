@@ -20,6 +20,11 @@ def gen_MFCC(file_name):
 	return mfcc_feat
 
 def gen_MFCC_Tune(file_name, winlen, winstep, nfft, numcep):
+	"""
+	This function was used for tuning the parameters of the mfcc call
+		- Called in the alex_tune_parameters.py file
+
+	"""
 	# test with whole song and rate
 	rate, audio_signal = read(file_name)
 	# Alter size of slice, smaller sizes may be quicker and give higher accuracy but could be prone to overfitting

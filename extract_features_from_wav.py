@@ -18,18 +18,6 @@ def extract_features_from_wav(file_name):
 
 	amplitude_abs_value = np.absolute(audio)
 
-	# under25 = 0
-	# between25and100 = 0
-	# zero = 0
-	# for indx,val in enumerate(amplitude_abs_value):
-	# 	if val < 25 and val > 0:
-	# 		under25 += 1
-	# 	elif val > 24 and val < 101:
-	# 		between25and100 += 1
-	# 	elif val < 1:
-	# 		zero += 1
-	# print under25, between25and100, zero
-
 	mean = np.mean(amplitude_abs_value)
 	std = np.std(amplitude_abs_value)
 	var = np.var(amplitude_abs_value)
