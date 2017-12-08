@@ -57,21 +57,22 @@ def tune_params(model, winlen_range=[0.025], winstep_range=[0.01], nfft_range=[1
 	return best_params
 
 
-# Tune parameters of the MFCC, in order to give us a good idea of what range these values should lie within
+if __name__ == "__main__":
+	# Tune parameters of the MFCC, in order to give us a good idea of what range these values should lie within
 
-# Ideal winlen = 0.25
-winlen_range = [0.001, 0.005, 0.01, 0.05, 0.1, 0.25, 0.5, 1.0, 5.0]
-# Ideal winstep = 0.1
-winstep_range = [0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0, 5.0]
-# Ideal nfft = 11025
-nfft_range = [10000, 11025, 12500, 15000]
-# Ideal numcep value = 13
-numcep_range = [3, 6, 9, 12, 13, 15, 18, 21]
+	# Ideal winlen = 0.25
+	winlen_range = [0.001, 0.005, 0.01, 0.05, 0.1, 0.25, 0.5, 1.0, 5.0]
+	# Ideal winstep = 0.1
+	winstep_range = [0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1.0, 5.0]
+	# Ideal nfft = 11025
+	nfft_range = [10000, 11025, 12500, 15000]
+	# Ideal numcep value = 13
+	numcep_range = [3, 6, 9, 12, 13, 15, 18, 21]
 
-model = AdaBoostClassifier()
-tuned_values = tune_params(model, winlen_range, winstep_range, nfft_range, numcep_range)
+	model = AdaBoostClassifier()
+	tuned_values = tune_params(model, winlen_range, winstep_range, nfft_range, numcep_range)
 
-print tuned_values
+	print tuned_values
 
 
 

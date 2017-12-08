@@ -2,9 +2,10 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 from alex_generate_MFCC import gen_MFCC
-from alex_tune_parameters import tuned_params
+from alex_tune_parameters import tune_params
 import os
 import numpy as np
+
 
 classical_path = os.path.join("data", "classical")
 metal_path = os.path.join("data", "metal")
@@ -29,7 +30,6 @@ X_train, X_test, y_train, y_test = train_test_split(X, y)
 model = AdaBoostClassifier()
 
 scores = []
-
 for i in range(10):
 	score = cross_val_score(model, X, y, cv=5)
 	scores += list(score)
