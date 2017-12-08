@@ -7,7 +7,7 @@ import os
 import numpy as np
 
 if __name__ == "__main__":
-    genres = ["classical", "metal", "rap"]
+    genres = ["classical", "metal", "rap", "jazz"]
 
     estimator_counts = [100, 150, 200, 300, 400, 500, 600]
     learning_rates = [0.1 * i for i in range(1, 12)]
